@@ -1,0 +1,49 @@
+<meta charset="utf-8">
+
+<h3>Calculo imc tomando datos</h3>
+
+<script>
+	
+	function saltarLinea() {
+
+		document.write("<br>");
+
+	}
+
+	function mostrar(frase) {
+
+		document.write(frase);
+		saltarLinea();
+
+	}
+
+	function resultado(peso, altura) {
+
+		return peso / (altura * altura);
+
+	}
+
+	var nombre = prompt("Ingrese su nombre");
+	var peso = prompt(nombre + ", ingrese su peso");
+	var altura = prompt(nombre + ", ingrese su altura");
+	var imcCalculado = resultado(peso, altura);
+
+	mostrar(nombre + " su imc calculado es: " + imcCalculado);
+
+	if (imcCalculado < 18.5) {
+		mostrar("IMC por debajo de lo normal");
+	}
+	// esta es una forma de hacerlo, con if en cascada o anidado
+	if (imcCalculado >= 18.5) {
+		if (imcCalculado < 25) {
+			mostrar("IMC normal");
+		}
+	}
+	// esta es la otra forma usando un solo if
+	if (imcCalculado >= 25 && imcCalculado <30) {
+		mostrar("IMC determina sobrepeso");
+	}
+	if (imcCalculado >= 30) {
+		mostrar("IMC determina obesidad");
+	}
+</script>

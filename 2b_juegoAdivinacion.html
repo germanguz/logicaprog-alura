@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+
+<h3>JUEGO DE ADIVINACION CON WHILE</h3>
+
+<script>
+	function saltarLinea() {
+
+		document.write("<br>");
+
+	}
+
+	function imprimir(frase) {
+
+		document.write(frase);
+		saltarLinea();
+
+	}
+
+	var numeroPensado = Math.round(Math.random() * 10);
+	var intentos = 3;
+	contador = 1;
+
+	while (contador <= intentos) {
+
+		var numerolanzado = parseInt(prompt("Ingrese un número entre 0 y 10"));
+
+		if (numerolanzado == numeroPensado) {
+
+			alert("Usted acertó!");
+			break;
+
+		}
+		else {
+
+			alert("Usted erró");
+
+		}
+		contador ++;
+	}
+	if (numerolanzado == numeroPensado) {
+
+		imprimir("Usted acertó en el intento " + contador + ". El número era " + numeroPensado);
+
+	}
+	else {
+
+		imprimir("Usted erró todos los intentos. El número era " + numeroPensado);
+
+	}
+	imprimir("Fin");
+
+</script>
