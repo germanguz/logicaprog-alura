@@ -1,0 +1,38 @@
+<h1>Dibujo puntos en el canvas</h1>
+<h3>Tiene en cuenta las coordenadas para dibujar</h3>
+<canvas width="600" height="400">
+	
+</canvas>
+
+<script>
+	
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	pincel.fillStyle = "grey";
+	pincel.fillRect(0,0,600,400);
+
+	function exhibirAlerta(evento) {
+		// con pantalla.offsetLeft resto el margen, para mostrar coordenadas solo del canvas y no de los margenes sup e izq de la pantalla
+		var x = evento.pageX - pantalla.offsetLeft;
+		var y = evento.pageY - pantalla.offsetTop;
+		console.log(evento);
+		alert("usted hizo click: " + x + ", " + y);
+	}
+
+	function dibujarCirculo(evento) {
+		var x = evento.pageX - pantalla.offsetLeft;
+		var y = evento.pageY - pantalla.offsetTop;
+
+		pincel.fillStyle = "blue";
+		pincel.beginPath();
+		pincel.arc(x, y, 10, 0, 2*3.14);
+		pincel.fill();
+
+		console.log(x + ", " + y); 
+	}
+
+	// pantalla.onclick = exhibirAlerta;
+	pantalla.onclick = dibujarCirculo;
+
+</script>

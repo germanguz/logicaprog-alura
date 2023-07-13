@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+
+<h1>Inicio de sesión con 3 intentos</h1>
+<p>usuario: alura</p>
+<p>clave: alura321</p>
+
+<script>
+
+    let inicioDeSesionRegistrado = "alura";
+    let contrasenhaRegistrada = "alura321";
+    let intento = 1;
+
+    while (intento <= 3) {
+
+        let inicioDeSesionIngresado = prompt("Ingrese su usuario");
+        let contrasenhaIngresada = prompt("Ingrese su contraseña");
+
+        if( inicioDeSesionRegistrado == inicioDeSesionIngresado && contrasenhaRegistrada == contrasenhaIngresada ) {
+            alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+            break;
+        } else {
+            alert("inicio de sesión inválido. Favor intente de nuevo");
+        }
+        
+        intento++;
+    }
+
+</script>

@@ -1,0 +1,45 @@
+<h1>Dibujo puntos de colores en el canvas</h1>
+<h3>Los colores cambian al hacer clic derecho</h3>
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");    
+    pincel.fillStyle = "grey";
+    pincel.fillRect(0,0,600,400); 
+
+    var color = "blue";
+
+    function dibujarCirculo(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;    
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,10,0,2*3.14);
+        pincel.fill();
+        console.log(x + "," + y);        
+    }
+
+    pantalla.onclick = dibujarCirculo;
+
+    var colores = ["blue", "red", "green"];
+    var contador = 1;
+
+    function alterarColor() {
+
+        color = colores[contador];
+        contador++;
+
+        if (contador == 3) {
+            contador = 0;
+        }
+        //alert("Funcionó");
+        return false;
+    }
+
+    pantalla.oncontextmenu = alterarColor;
+
+    //esta es mi solucion. El curso ofrece otra en "aula3-cambiando color"
+
+</script> 

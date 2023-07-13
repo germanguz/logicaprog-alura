@@ -1,0 +1,82 @@
+<h1>Dibujo con el mouse sobre canvas</h1>
+<h3>Permite seleccionar el color haciendo click y al mantener pulsado dibuja</h3>
+<canvas width="600" height="400"></canvas>
+
+<script> // leer al fondo
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+	var colores = ["red", "green", "blue"];
+	var contador = 0;
+	var ejeX = 0;
+	var x = 0;
+	var y = 0;
+	var color = colores[2];
+	var puedoDibujar = false;
+
+	pincel.fillStyle = "lightgrey";
+	pincel.fillRect(0,0,600,400);
+
+	while(contador < colores.length) {
+		pincel.fillStyle = colores[contador];
+		pincel.fillRect(ejeX,0,50,50);		
+		ejeX = ejeX + 50;
+		contador++;
+	}
+	// FUNCIONES
+	function elegirColor(evento) {
+		x = evento.pageX - pantalla.offsetLeft;
+		y = evento.pageY - pantalla.offsetTop;
+		//console.log(x, y);
+		if ((x <= 50) && (y <= 50)) {
+			color = colores[0];
+		}
+		if ((x > 50) && (x <= 100) && (y <= 50)) {
+			color = colores[1];
+		}
+		if ((x > 100) && (x <= 150) && (y <= 50)) {
+			color = colores[2];
+		}
+		//console.log(color);
+	}
+
+	function dibujar(evento) {
+		x = evento.pageX - pantalla.offsetLeft;
+		y = evento.pageY - pantalla.offsetTop;
+		
+		if(cancelarDibujo(x, y)) {
+			//console.log(cancelarDibujo());
+			if(puedoDibujar) {
+				pincel.fillStyle = color;
+				pincel.beginPath();
+				pincel.arc(x,y,5,0,2*Math.PI);
+				pincel.fill();
+			}
+		}
+	}
+
+	function cancelarDibujo(x, y) {
+		//console.log(x, y);
+		if(((x > 0) && (x <= 150 + 5)) && ((y > 0) && (y <= 50 + 5))) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	function habilitarDibujar() {
+		puedoDibujar = true;
+	}
+	function deshabilitarDibujar() {
+		puedoDibujar = false;
+	}
+
+	pantalla.onclick = elegirColor;
+	pantalla.onmousedown = habilitarDibujar;
+	pantalla.onmouseup = deshabilitarDibujar;
+	pantalla.onmousemove = dibujar;
+
+// este lo hice otra vez desde cero porque el que hice había
+// quedado con algunas fallas. Me fui ayudando con el del profe
+// cambiando algunas cosas. Quedó bien
+</script>

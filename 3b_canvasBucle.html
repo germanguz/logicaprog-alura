@@ -1,0 +1,43 @@
+<h1>Dibujo con canvas usando bucles</h1>
+<h3>primer bandera con while, segunda con for</h3>
+<canvas width="600" height="400">
+	
+</canvas>
+
+<script>
+	function dibujarCuadrado(x,y,color) {
+
+		var pantalla = document.querySelector("canvas");
+		var pincel = pantalla.getContext("2d");
+
+		pincel.fillStyle = color;
+		pincel.fillRect(x,y,50,50);
+
+		pincel.strokeStyle = "black";
+		pincel.strokeRect(x,y,50,50);
+	}
+
+	// CUADRADITOS VERDES
+	/* dibujarCuadrado(0, 0, "green");
+	dibujarCuadrado(50, 0, "green");
+	dibujarCuadrado(100, 0, "green"); */
+	
+	// BANDERA CON WHILE
+	 var x = 0;
+	while(x < 600) {
+
+		dibujarCuadrado(x, 0, "red");
+		dibujarCuadrado(x, 50, "yellow");
+		dibujarCuadrado(x, 100, "green");
+		x = x + 50;
+	}
+	
+	//BANDERA CON FOR
+	for (var x = 0; x < 600; x = x + 50) {
+		
+		dibujarCuadrado(x, 200, "red");
+		dibujarCuadrado(x, 250, "yellow");
+		dibujarCuadrado(x, 300, "green");
+	}
+	
+</script>

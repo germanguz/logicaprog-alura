@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+
+<h1>Receta de cocina</h1>
+<p>ingresa ingredientes y valida que no se repitan</p>
+
+<script>
+
+    let ingredientes = [];
+    let cantidad = parseInt(prompt("¿Cuántos ingredientes vas a añadir?"));
+    let contador = 1;
+    
+
+    while( contador <= cantidad) {
+
+        let validador = false;
+        let ingrediente = prompt("Informe el ingrediente " + contador);
+
+        for (let posicion = 0; posicion < ingredientes.length; posicion++) {
+            //en donde puse "ingredientes.length" también pude poner "cantidad"
+
+            if (ingrediente == ingredientes[posicion]) {
+
+                alert("Ingrediente ya ingresado, intente otra vez");
+                validador = true;
+                break;
+            }
+        }
+
+        if (validador == false) {
+
+            ingredientes.push(ingrediente);
+            contador++;
+        }
+    }
+
+    console.log(ingredientes);
+    document.write("<h4>La receta incluye: " + ingredientes + "</h4>");
+
+</script>

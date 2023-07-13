@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+
+<h3>Números pares hasta 100</h3>
+
+<script>
+	
+	function saltarLinea() {
+
+		document.write("<br>");
+
+	}
+
+	function imprimir(frase) {
+		
+		document.write(frase);
+		saltarLinea();
+	}
+
+	let limite = 100;
+	let contador = 2;
+
+	while (contador <= limite) {
+
+		imprimir("El número par es: " + contador);
+		contador = contador + 2;
+	}
+
+	imprimir("Fin");
+
+	
+	// otra forma de hacer lo mismo sería:
+
+	// let limite = 100;
+	// let contador = 0;
+
+	// while (contador < limite) {
+
+	// 	contador = contador + 2;
+	// 	imprimir("El número par es: " + contador);
+	// }
+
+</script>
