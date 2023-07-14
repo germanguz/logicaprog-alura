@@ -1,5 +1,7 @@
 <meta charset="utf-8">
+<link rel="stylesheet" href="./style.css">
 
+<a href="./index.html">Volver</a>
 <h3>Calculo imc tomando datos</h3>
 
 <script>
@@ -24,8 +26,8 @@
 	}
 
 	var nombre = prompt("Ingrese su nombre");
-	var peso = prompt(nombre + ", ingrese su peso");
-	var altura = prompt(nombre + ", ingrese su altura");
+	var peso = prompt(nombre + ", ingrese su peso en kilogramos");
+	var altura = prompt(nombre + ", ingrese su altura en metros");
 	var imcCalculado = resultado(peso, altura);
 
 	mostrar(nombre + " su imc calculado es: " + imcCalculado);
